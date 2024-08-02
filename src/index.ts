@@ -50,9 +50,16 @@ async function init() {
                 if("Service" in event && "Event" in event) {
                     if(event.Event === "s3:TestEvent") continue;
                 }
-    
-                // Spin up the docker container 
-    
+     
+                for(const record of event.Records) {
+                    const { s3 } = record;
+                    const { bucket, object: { key }}  = s3;
+                }
+
+                // Spin up the docker container
+
+                
+
                 // Delete the message from queue
             }
         } catch(err) {
